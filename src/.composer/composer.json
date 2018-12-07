@@ -1,0 +1,12 @@
+{
+    "name": "root/.composer",
+    "authors": [
+        {
+            "name": "P V",
+            "email": "pvovka@yahoo.com"
+        }
+    ],
+    "require": {
+        "arrilot/bitrix-migrations": "^2.5"
+    }
+}

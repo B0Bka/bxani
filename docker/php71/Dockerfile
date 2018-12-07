@@ -24,6 +24,7 @@ RUN apt-get update \
         gd \
         mysqli \
         pdo_mysql \
+        zip \
     && pecl install \
         xdebug \
         memcached \
