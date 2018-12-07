@@ -173,7 +173,7 @@ $baskerService = app('BasketService');
 
         <div class="container">
 
-            <? if (showBreadcrumb()): ?>
+            <?/* if (showBreadcrumb()): ?>
             <!-- Хлебные крошки -->
             <? $APPLICATION->IncludeComponent(
                 'bitrix:breadcrumb',
@@ -191,4 +191,4 @@ $baskerService = app('BasketService');
 
                 <? endif; ?>
 
-                <? endif; ?>
+                <? endif; */?>
