@@ -1,0 +1,3 @@
+<?
+CModule::IncludeModule('aniart.main');
+?>
