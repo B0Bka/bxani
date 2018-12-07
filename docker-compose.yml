@@ -44,6 +44,8 @@ services:
     restart: always
     networks:
       - default
+    environment:
+      - PHP_IDE_CONFIG=serverName=docker
 
   db:
     image: mysql:5.7
