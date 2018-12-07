@@ -11,6 +11,9 @@ RUN apt-get update \
         libmcrypt-dev \
         curl \
         ssmtp \
+        openssh-server \
+        iputils-ping netcat \
+    && mkdir /var/run/sshd \
     && docker-php-ext-configure gd \
         --enable-gd-native-ttf \
         --with-jpeg-dir=/usr/include \
@@ -36,4 +39,5 @@ WORKDIR /var/www/html
 
 EXPOSE 9000
 
+CMD ["/usr/sbin/sshd", "-D"]
 CMD ["php-fpm"]
