@@ -47,7 +47,7 @@
                 });
             });
 
-            _self.getStick();
+//            _self.getStick();
 
 
         },

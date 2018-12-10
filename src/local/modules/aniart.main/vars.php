@@ -11,7 +11,7 @@ define('RETAIL_ID_PRICE', 5);
 define('HL_LANG_MESSAGES_ID', 1);
 
 //subscription
-define('SUB_DISCOUNT', 2);
+define('SUB_DISCOUNT', 1);
 
 //Группы свойств заказа OPG = Order Properties Group
 define('OPG_USER_INFO', 1);

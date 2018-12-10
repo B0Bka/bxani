@@ -151,7 +151,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 </div>
 
 <?
-include 'include/modals.php';
+//include 'include/modals.php';
 
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/lib/bootstrap.min.js');
 
@@ -159,12 +159,10 @@ $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/init.js');
 
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/app.js');
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module/auth.js');
-$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module//subscription.js');
+$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module/subscription.js');
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module/catalog.js');
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module/personal.js');
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module/basket.js');
-$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module/reorder.js');
-$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/module/shops.js');
 $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/js/src/final.js');
 
 ?>

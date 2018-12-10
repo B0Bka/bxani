@@ -144,8 +144,6 @@ class Subscribs extends CBitrixComponent
         );
         $id = $subscribe->Add($fields);
         if($id > 0) {
-			$subscribe = new Aniart\Main\Tools\retailCrmHelper;
-            $newSubscribe = $subscribe->customerSubscribe($this->arParams['DATA']['EMAIL'], $userId);
             \CSubscription::Authorize($id);
             $result['status'] = 'success';
             $result['msg'] = 'Подписка на рассылку успешно добавлена';
