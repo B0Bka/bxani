@@ -71,9 +71,6 @@ $baskerService = app('BasketService');
                 "catalog",
                 Array(
                     "CATEGORY_0" => array("iblock_1c_catalog"),
-                    "CATEGORY_0_TITLE" => "",
-                    "CATEGORY_0_iblock_1c_catalog" => array("2", "3"),
-                    "CHECK_DATES" => "N",
                     "CONTAINER_ID" => "title-search",
                     "INPUT_ID" => "title-search-input",
                     "NUM_CATEGORIES" => "1",
