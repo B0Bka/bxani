@@ -23,6 +23,11 @@ $arData = [
         'UF_MESSAGE' => 'Подписка на акции',
         'UF_GROUP' => 'subscription',
     ],
+    [
+        'UF_HASH' => 'SEARCH_PLACEHOLDER',
+        'UF_MESSAGE' => 'Поиск по сайту',
+        'UF_GROUP' => '',
+    ],
 
 ];
 CModule::IncludeModule('highloadblock');
