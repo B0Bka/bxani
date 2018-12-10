@@ -47,6 +47,13 @@
                 }
             });
         },
+        getLogInit:function(params){
+            var _this = this;
+            params.active = params.active || _this.LOG_INIT;
+            params.message = params.message || 'not found';
+            if(!params.active) return false;
+            return console.log(params.message);
+        }
     });
 
 })(window.App);

@@ -44,12 +44,29 @@ $baskerService = app('BasketService');
                         'bitrix:main.include', '',
                         array(
                             'AREA_FILE_SHOW' => 'file',
-                            'PATH' => SITE_TEMPLATE_PATH . '/include/header_phone.php'
+                            'PATH' => SITE_TEMPLATE_PATH . '/include/phone_1.php'
+                        ),
+                        false
+                    ); ?>
+                    <? $APPLICATION->IncludeComponent(
+                        'bitrix:main.include', '',
+                        array(
+                            'AREA_FILE_SHOW' => 'file',
+                            'PATH' => SITE_TEMPLATE_PATH . '/include/phone_2.php'
+                        ),
+                        false
+                    ); ?>
+                    <? $APPLICATION->IncludeComponent(
+                        'bitrix:main.include', '',
+                        array(
+                            'AREA_FILE_SHOW' => 'file',
+                            'PATH' => SITE_TEMPLATE_PATH . '/include/header_address.php'
                         ),
                         false
                     ); ?>
                     </span>
                 </div>
+            <?/*
                 <div class="header-bt">
                     <? if (!$USER->IsAuthorized()): ?>
                         <a class="bt-1 modal-open" data-toggle="modal" data-target="#myModal">
@@ -69,18 +86,6 @@ $baskerService = app('BasketService');
                         <!-- Блок Корзины -->
                     <div id="basket_list" class="basket-pop"></div>
                         <!-- Конец Блок корзины -->
-
-                        <? /*$APPLICATION->IncludeComponent(
-                        'bitrix:sale.basket.basket.small',
-                        'header',
-                        Array(
-                            "PATH_TO_BASKET" => "/personal/",
-                            "PATH_TO_ORDER" => "/order/",
-                            "SHOW_DELAY" => "N",
-                            "SHOW_NOTAVAIL" => "N",
-                            "SHOW_SUBSCRIBE" => "N"
-                        )
-                    );*/ ?>
                 </span>
 
                     <!--Блок поиска -->
@@ -107,6 +112,7 @@ $baskerService = app('BasketService');
 
 
                 </div>
+*/?>
                 <div class="logo">
                         <a href="/">
                             <img src="<?= SITE_TEMPLATE_PATH ?>/images/logo.png" alt=""/>

@@ -8,11 +8,6 @@
             
             _app.getLogInit({message:'final.js init..'});
             
-            if(window.location.pathname.split('/')[1] != 'catalog'){
-                _app.getStyler({object:$(_app.selector.styler)});
-            } else {
-                _app.getStyler({object:$('.wrapper select, .modal.fade input')});
-            }
         }
     };
 

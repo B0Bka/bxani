@@ -40,9 +40,7 @@
                 _this = this;
 
             _app.getLogInit({message:'personal.js init..'});
-            
-            _this.getSelectedTab();
-
+            /*
             _this.getTabMenu({
                 object:$(_this.block.menu+' li[data-id="'+_this.MENU_ITEM+'"]')
             });
@@ -51,12 +49,11 @@
             _this.getBirthday({
                 block:$(_this.form.profile).find(_this.selector.birthday)
             });
-            
+            */
+
             _this.events();
-            $(_this.selector.phone).unmask();
-
-
         },
+        /*
         getSelectedTab:function(){
             var _this = this,
                 hash = location.hash.slice(1);
@@ -69,6 +66,7 @@
             }
             return _this.MENU_ITEM;
         },
+        */
         getTabMenu:function(params){
             params.object = params.object || {};
             if(!params.object.length) return false;
