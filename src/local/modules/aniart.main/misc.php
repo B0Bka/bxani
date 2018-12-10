@@ -196,3 +196,11 @@ function detectOrder(){
     }
     return false;
 }
+
+function showBreadcrumb()
+{
+    if(!detectMain() && !detectOrder()){
+        return true;
+    }
+    return false;
+}

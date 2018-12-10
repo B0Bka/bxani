@@ -169,28 +169,23 @@ $baskerService = app('BasketService');
             </div>
         <? endif; ?>
 
-        <?
-        $APPLICATION->ShowViewContent('blog_detail')
-        ?>
-
         <div class="container">
 
-            <?/* if (showBreadcrumb()): ?>
-            <!-- Хлебные крошки -->
-            <? $APPLICATION->IncludeComponent(
-                'bitrix:breadcrumb',
-                'main',
-                [
-                    'START_FROM' => '0',
-                    'PATH' => '',
-                    'SITE_ID' => 's1'
-                ]
-            ); ?>
-            <!-- Конец Хлебные крошки -->
+            <?if (showBreadcrumb()): ?>
+                <!-- Хлебные крошки -->
+                <? $APPLICATION->IncludeComponent(
+                    'bitrix:breadcrumb',
+                    'main',
+                    [
+                        'START_FROM' => '0',
+                        'PATH' => '',
+                        'SITE_ID' => 's1'
+                    ]
+                ); ?>
+                <!-- Конец Хлебные крошки -->
 
-            <? if ($APPLICATION->GetDirProperty('static') === 'Y'): ?>
-            <div class="page-content">
-
+                <? if ($APPLICATION->GetDirProperty('static') === 'Y'): ?>
+                    <div class="page-content">
                 <? endif; ?>
 
-                <? endif; */?>
+            <? endif;?>

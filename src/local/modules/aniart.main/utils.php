@@ -193,3 +193,10 @@ function arrSort($a, $b)
 {
     return ($a['id'] - $b['id']);
 }
+/**
+ * вхождение подстроки
+ */
+function containStr($haystack, $needle)
+{
+    return strpos($haystack, $needle) !== false;
+}

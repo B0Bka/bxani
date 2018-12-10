@@ -41,5 +41,6 @@ define('FACEBOOK_KEY', '376514502814671');
 define('FACEBOOK_SECRET', '716112f91d05c43b1dbf3d4da4ba164e');
 define('SOCAUTH_REDIRECT_URI', 'https://natalibolgar.com/personal/auth.php');
 
-$actual_link = "https://$_SERVER[HTTP_HOST]";
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+$actual_link = $protocol.$_SERVER['HTTP_HOST'];
 define('ACTUAL_LINK', $actual_link);
