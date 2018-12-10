@@ -11,7 +11,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 <!-- Конец Основная часть -->
         
 <!-- Подписка -->
-<?if($mainDetect):?>
 <?$APPLICATION->IncludeComponent(
     'aniart:subscription',
     'main',
@@ -21,12 +20,44 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
         'CACHE_TIME' => 3600000
     ]
 );?>
-<?endif;?>
 <!-- Конец Подписка -->
         
 <!-- Подвал -->
 <footer>
     <div class="container">
+        <? $APPLICATION->IncludeComponent(
+            'bitrix:main.include', '',
+            array(
+                'AREA_FILE_SHOW' => 'file',
+                'PATH' => SITE_TEMPLATE_PATH . '/include/footer_address.php'
+            ),
+            false
+        ); ?>
+        <? $APPLICATION->IncludeComponent(
+            'bitrix:main.include', '',
+            array(
+                'AREA_FILE_SHOW' => 'file',
+                'PATH' => SITE_TEMPLATE_PATH . '/include/schedule.php'
+            ),
+            false
+        ); ?>
+        <? $APPLICATION->IncludeComponent(
+            'bitrix:main.include', '',
+            array(
+                'AREA_FILE_SHOW' => 'file',
+                'PATH' => SITE_TEMPLATE_PATH . '/include/phone_1.php'
+            ),
+            false
+        ); ?>
+        <? $APPLICATION->IncludeComponent(
+            'bitrix:main.include', '',
+            array(
+                'AREA_FILE_SHOW' => 'file',
+                'PATH' => SITE_TEMPLATE_PATH . '/include/phone_2.php'
+            ),
+            false
+        ); ?>
+
         <div class="footer-menu">
             <?$APPLICATION->IncludeComponent(
                 "bitrix:menu",
@@ -76,42 +107,43 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                     "ALLOW_MULTI_SELECT" => "N"
                 )
             );?>
-            <div class="foot-soc">
-                <?$APPLICATION->IncludeComponent(
-                    'bitrix:main.include', '', 
-                    array(
-                        'AREA_FILE_SHOW' => 'file', 
-                        'PATH' => SITE_TEMPLATE_PATH.'/include/footer_soc.php'
-                    ), 
-                    false
-                );?>
-            </div>
-        </div>
-        <div class="footer-shop">
-            <div class="footer-tit">
-                <a href="/our-shops">Наши магазины</a>
-            </div>
-            <div class="footer-shop-thumb">
-                <a href="/our-shops">
-                    <img src="<?=SITE_TEMPLATE_PATH?>/images/shop.jpg" alt=" " />
-                </a>
-            </div>
-            <div class="shop-map">
-                <a href="#">
-                    Посмотреть карту
-                </a>
-            </div>
         </div>
     </div>
     <div class="foot-bot">
         <div class="container">
             <div class="copy">
-                © 2018 NATALI BOLGAR
-            </div>
-            <div class="dev">
-                <a href="http://www.aniart.com.ua/">
-                    Сайт создан в AniArt
-                </a>
+                <?$APPLICATION->IncludeComponent(
+                    'bitrix:main.include', '',
+                    array(
+                        'AREA_FILE_SHOW' => 'file',
+                        'PATH' => SITE_TEMPLATE_PATH.'/include/copyright.php'
+                    ),
+                    false
+                );?>
+                <?$APPLICATION->IncludeComponent(
+                    'bitrix:main.include', '',
+                    array(
+                        'AREA_FILE_SHOW' => 'file',
+                        'PATH' => SITE_TEMPLATE_PATH.'/include/oferta.php'
+                    ),
+                    false
+                );?>
+                <?$APPLICATION->IncludeComponent(
+                    'bitrix:main.include', '',
+                    array(
+                        'AREA_FILE_SHOW' => 'file',
+                        'PATH' => SITE_TEMPLATE_PATH.'/include/email.php'
+                    ),
+                    false
+                );?>
+                <?$APPLICATION->IncludeComponent(
+                    'bitrix:main.include', '',
+                    array(
+                        'AREA_FILE_SHOW' => 'file',
+                        'PATH' => SITE_TEMPLATE_PATH.'/include/socials.php'
+                    ),
+                    false
+                );?>
             </div>
         </div>
     </div>
