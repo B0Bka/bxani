@@ -1,0 +1,60 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Распродажи", 
+		"/sale/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Услуги", 
+		"/services/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Инженерам", 
+		"/engineers/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Учебный центр", 
+		"/learning/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Прес-центр", 
+		"/news/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Карьера", 
+		"/career/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"О нас ", 
+		"/about/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"Контакты", 
+		"/contacs/", 
+		Array(), 
+		Array(), 
+		"" 
+	)
+);
+?>

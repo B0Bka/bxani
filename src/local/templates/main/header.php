@@ -66,6 +66,25 @@ $baskerService = app('BasketService');
                     ); ?>
                     </span>
                 </div>
+            <? $APPLICATION->IncludeComponent(
+                "aniart:search.title",
+                "catalog",
+                Array(
+                    "CATEGORY_0" => array("iblock_1c_catalog"),
+                    "CATEGORY_0_TITLE" => "",
+                    "CATEGORY_0_iblock_1c_catalog" => array("2", "3"),
+                    "CHECK_DATES" => "N",
+                    "CONTAINER_ID" => "title-search",
+                    "INPUT_ID" => "title-search-input",
+                    "NUM_CATEGORIES" => "1",
+                    "ORDER" => "date",
+                    "PAGE" => "#SITE_DIR#catalog/search/",
+                    "SHOW_INPUT" => "Y",
+                    "SHOW_OTHERS" => "N",
+                    "TOP_COUNT" => "4",
+                    "USE_LANGUAGE_GUESS" => "Y"
+                )
+            ); ?>
             <?/*
                 <div class="header-bt">
                     <? if (!$USER->IsAuthorized()): ?>
@@ -88,29 +107,6 @@ $baskerService = app('BasketService');
                         <!-- Конец Блок корзины -->
                 </span>
 
-                    <!--Блок поиска -->
-                    <? $APPLICATION->IncludeComponent(
-                        "aniart:search.title",
-                        "catalog",
-                        Array(
-                            "CATEGORY_0" => array("iblock_1c_catalog"),
-                            "CATEGORY_0_TITLE" => "",
-                            "CATEGORY_0_iblock_1c_catalog" => array("2", "3"),
-                            "CHECK_DATES" => "N",
-                            "CONTAINER_ID" => "title-search",
-                            "INPUT_ID" => "title-search-input",
-                            "NUM_CATEGORIES" => "1",
-                            "ORDER" => "date",
-                            "PAGE" => "#SITE_DIR#catalog/search/",
-                            "SHOW_INPUT" => "Y",
-                            "SHOW_OTHERS" => "N",
-                            "TOP_COUNT" => "4",
-                            "USE_LANGUAGE_GUESS" => "Y"
-                        )
-                    ); ?>
-                    <!--- Конец блока поиска-->
-
-
                 </div>
 */?>
                 <div class="logo">
@@ -122,15 +118,15 @@ $baskerService = app('BasketService');
         </div>
         <? $APPLICATION->IncludeComponent(
             "bitrix:menu",
-            "main",
+            "top",
             array(
-                "COMPONENT_TEMPLATE" => "main",
+                "COMPONENT_TEMPLATE" => "top",
                 "ROOT_MENU_TYPE" => "top",
                 "MENU_CACHE_TYPE" => "A",
                 "MENU_CACHE_TIME" => "3600",
                 "MENU_CACHE_USE_GROUPS" => "Y",
                 "MENU_CACHE_GET_VARS" => array(),
-                "MAX_LEVEL" => "2",
+                "MAX_LEVEL" => "1",
                 "CHILD_MENU_TYPE" => "left",
                 "USE_EXT" => "Y",
                 "DELAY" => "N",
