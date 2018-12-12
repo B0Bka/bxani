@@ -1,82 +1,104 @@
 <?php
-define("NO_KEEP_STATISTIC", true);
 
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
+namespace Aniart\Main\Ajax\Handlers;
 
-$request = $_REQUEST;
+use Aniart\Main\Ajax\AbstractAjaxHandler,
+    Aniart\Main\Tools\FormValidation,
+    Bitrix\Main\Type\DateTime,
+    Bitrix\Main\Mail\Event,
+    Bitrix\Main\Security\Sign\BadSignatureException;
 
-if($request['ajax_mode_delete'] == 'Y')
+class UserRegisterAjaxHandler extends AbstractAjaxHandler
 {
-    $APPLICATION->RestartBuffer();
 
-    $prodId = $request['id_element_delete'];
-    global $USER;
-
-
-    $userId = $USER->GetID();
-    $isDelete = false;
-
-    if($prodId != 0 && $userId > 0 ){
-        /*
-         *  удаляем элемент с таблицы
-         */
-        $rsFav = FavoritesTable::getList(array(
-            'select' => array('ID'),
-            'filter' => array('=USER_ID' => $userId, '=PRODUCT_ID' => $prodId)
-        ));
-        if($fav = $rsFav->fetch()){
-
-            $result = FavoritesTable::delete($fav['ID']);
-            $isDelete = $result->isSuccess();
-
-        }
-        /*
-         *  если все хорошо, получаем текущие элементы с таблицы и отправлем их на компонент
-         */
-        if($isDelete){
-
-            $arElementIDs = FavoritesTable::GetFavoritesProductsIDs($USER->GetID());
-
-            if(count($arElementIDs) > 0){
-                $GLOBALS['arrFavoriteFilter'] = array("ID" => $arElementIDs);
-
-                $params = $request['params'];
-                /*
-                 *  режим аякса включен
-                 */
-                $params['AJAX_MODE2'] = 'Y';
-                /*
-                 *  передаем текущую страницу на которой находимся
-                 */
-                $params['NAV_NUM'] = $request["current_page"];
-
-                $APPLICATION->IncludeComponent(
-                    'aniart:user.favorites',
-                    $request['template'],
-                    $params
-                );
-               die();
-
-            }
-            else{
-                echo "<div>Ваш список желаний пуст</div>";
-            }
-
-        } /*
-            если удаление неккоректное, передаем просто пустой div, чтобы не висел компонент
-          */
-        else{
-            echo "<div></div>";
-        }
-
-
+    public function __construct()
+    {
+        parent::__construct();
     }
 
+    public function getRegister()
+    {
+        global $USER;
+        if(!is_object($USER))
+        {
+            $USER = new \CUser;
+        }
 
-   die();
+        $data = $this->post['form'];
+        $fields = $this->normalizeData($data);
+        if(empty($fields))
+            return $this->setError('empty fields');
+
+        $validation = new FormValidation($fields, 'register');
+        $validationResult = $validation->checkValidation();
+        if($validationResult)
+            return $this->setError($validationResult);
+
+        $USER = new \CUser;
+        $ID = $USER->Add($fields);
+        if (intval($ID) > 0)
+        {
+            $this->sendEmail($fields);
+            return $this->setOK('!!!!!!1');
+        }
+        else
+            return $this->setError($USER->LAST_ERROR);
+    }
+
+    private function normalizeData($data)
+    {
+        $paramFields = explode(';', $this->post['form']['req']);
+        foreach ($paramFields as $field)
+        {
+            if($field == 'PERSONAL_BIRTHDAY' && !empty($data[$field]))
+            {
+                $objDateTime = DateTime::createFromPhp(new \DateTime($data[$field]));
+                $result[$field] = $objDateTime->toString();
+            }
+            else
+                $result[$field] = $data[$field];
+        }
+
+        $result['LOGIN'] = $data['EMAIL'];
+        $result['GROUP_ID'] = $this->getGroup();
+        return $result;
+    }
+
+    private function getGroup()
+    {
+        if($this->post['form']['client'] == 'partner')
+        {
+            $filter = ["STRING_ID" => "partners"];
+            $rsGroups = \CGroup::GetList($by = "c_sort", $order = "asc", $filter); // выбираем группы
+            while($arGroups = $rsGroups->Fetch())
+            {
+                $id = $arGroups['ID'];
+            }
+        }
+        if(!empty($id))
+            return array(2, $id);
+
+        return array(2);
+    }
+
+    private function sendEmail($fields)
+    {
+        $res = \Event::send(array(
+            "EVENT_NAME" => "USER_INFO",
+            "LID" => "s1",
+            "C_FIELDS" => array(
+                "EMAIL" => $fields['EMAIL'],
+                "NAME" => $fields['NAME'],
+                "LAST_NAME" => $fields['LAST_NAME']
+            ),
+        ));
+
+        return $res;
+    }
+
+    protected function getComponentParamsFromRequest($salt = 'products.list', $requestKey = 'signedParamsString')
+    {
+        return parent::getComponentParamsFromRequest($salt, $requestKey);
+    }
 
 }
-
-
-
-?>

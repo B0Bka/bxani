@@ -27,6 +27,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/.composer/vendor/autoload.php';
 Bitrix\Main\Loader::registerAutoLoadClasses(null, [
     '\Aniart\Main\Ajax\Handlers\OrderAjaxHandler' => '/local/components/aniart/sale.order/ajax.php',
     '\Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler' => '/local/components/aniart/products.list/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler' => '/local/components/aniart/register/ajax.php',
 ]);
 
 $langs = new LangsList([
@@ -114,6 +115,7 @@ CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
     'favorites' => '\Aniart\Main\Ajax\Handlers\FavoritesAjaxHandler',
     'products.list' => \Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler::class,
     'stores.product.list' => \Aniart\Main\Ajax\Handlers\StoreProductListAjaxHandler::class,
+    'register' => \Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler::class,
 ]);
 
 $jsExtConfig = [

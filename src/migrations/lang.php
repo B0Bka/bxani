@@ -28,6 +28,72 @@ $arData = [
         'UF_MESSAGE' => 'Поиск по сайту',
         'UF_GROUP' => '',
     ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_NAME',
+        'UF_MESSAGE' => 'Имя',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_LAST_NAME',
+        'UF_MESSAGE' => 'Фамилия',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_PERSONAL_PHONE',
+        'UF_MESSAGE' => 'Номер телефона',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_UF_WHATSAPP',
+        'UF_MESSAGE' => 'Номер телефона WhatsApp',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_EMAIL',
+        'UF_MESSAGE' => 'E-mail',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_PERSONAL_CITY',
+        'UF_MESSAGE' => 'Город',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_WORK_COMPANY',
+        'UF_MESSAGE' => 'Название компании',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_WORK_POSITION',
+        'UF_MESSAGE' => 'Должность',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_UF_VOEN',
+        'UF_MESSAGE' => 'VOEN',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_PERSONAL_BIRTHDAY',
+        'UF_MESSAGE' => 'Дата рождения',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_PASSWORD',
+        'UF_MESSAGE' => 'Пароль',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_CONFIRM_PASSWORD',
+        'UF_MESSAGE' => 'Подтверждение пароля',
+        'UF_GROUP' => 'register',
+    ],
+    [
+        'UF_HASH' => 'PLACEHOLDER_PERSONAL_MOBILE',
+        'UF_MESSAGE' => 'Второй номер телефона',
+        'UF_GROUP' => 'register',
+    ],
+
 
 ];
 CModule::IncludeModule('highloadblock');

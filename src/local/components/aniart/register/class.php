@@ -10,7 +10,7 @@ class RegisterComponent extends CBitrixComponent
                 "LAST_NAME" => ['SORT' => 20, 'TYPE' => 'text'],
                 "PERSONAL_BIRTHDAY" => ['SORT' => 140, 'TYPE' => 'date'],
                 "PERSONAL_PHONE" => ['SORT' => 30, 'TYPE' => 'text', 'CLASS' => 'phone'],
-                "PERSONAL_MOBILE" => ['SORT' => 50, 'TYPE' => 'text', 'CLASS' => 'phone'],
+                "PERSONAL_MOBILE" => ['SORT' => 40, 'TYPE' => 'text', 'CLASS' => 'phone'],
                 "UF_WHATSAPP" => ['SORT' => 50, 'TYPE' => 'text', 'CLASS' => 'phone'],
                 "PERSONAL_CITY" => ['SORT' => 70, 'TYPE' => 'text'],
                 "UF_TYPE" => ['SORT' => 80, 'TYPE' => 'list'],
@@ -25,7 +25,7 @@ class RegisterComponent extends CBitrixComponent
     public function __construct($component = null)
     {
         parent::__construct($component);
-        $this->initParams();
+
 
     }
 
@@ -40,6 +40,7 @@ class RegisterComponent extends CBitrixComponent
 
     private function doExecuteComponent()
     {
+        $this->initParams();
         $this->getFields();
         $this->IncludeComponentTemplate();
     }
@@ -65,9 +66,9 @@ class RegisterComponent extends CBitrixComponent
         return [
             'CODE' => $field,
             'REQUIRED' => $this->isRequired($field),
-            'TYPE' => $this->getType($field),
-            'ADDITIONAL_CLASS' => $this->getClass($field),
-            'LIST' => $this->getList($field),
+            'TYPE' => $this->getParam($field, 'TYPE', 'text'),
+            'ADDITIONAL_CLASS' => $this->getParam($field, 'CLASS', false),
+            'LIST' => $this->getParam($field, 'LIST', ''),
         ];
     }
 
@@ -83,38 +84,17 @@ class RegisterComponent extends CBitrixComponent
 
         foreach($fields as $field)
         {
-            $key = $this->getSort($field['CODE']);
+            $key = $this->getParam($field['CODE'], 'SORT', 1000);
             $this->arResult['FIELDS'][$key] = $field;
         }
         ksort($this->arResult['FIELDS']);
     }
 
-    private function getSort($key)
+    private function getParam($key, $code, $default = '')
     {
-        if(!empty($this->sort[$key]['SORT']))
-            return $this->sort[$key]['SORT'];
-        else return 1000;
-    }
-
-    private function getType($key)
-    {
-        if(!empty($this->sort[$key]['TYPE']))
-            return $this->sort[$key]['TYPE'];
-        else return 'text';
-    }
-
-    private function getClass($key)
-    {
-        if(!empty($this->sort[$key]['CLASS']))
-            return $this->sort[$key]['CLASS'];
-        else return false;
-    }
-
-    private function getList($key)
-    {
-        if(!empty($this->sort[$key]['LIST']))
-            return $this->sort[$key]['LIST'];
-        else return false;
+        if(!empty($this->sort[$key][$code]))
+            return $this->sort[$key][$code];
+        else return $default;
     }
 
     private function initParams()
@@ -126,6 +106,7 @@ class RegisterComponent extends CBitrixComponent
                 $this->sort[$key]['LIST'] = $this->getEnum($key);
             }
         }
+        $this->arResult['ALL_FIELDS_CODE'] = array_merge($this->arParams['SHOW_FIELDS'], $this->arParams['USER_PROPERTY']);
     }
 
     private function getEnum($code)
@@ -138,7 +119,7 @@ class RegisterComponent extends CBitrixComponent
             "USER_FIELD_ID" => $id,
         ));
         while($arListRes = $rsList->GetNext())
-             $result[] = $arListRes["VALUE"];
+             $result[$arListRes['ID']] = $arListRes["VALUE"];
 
         return $result;
     }

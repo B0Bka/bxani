@@ -12,14 +12,14 @@
         },
         form:{
             login:'#auth_login',
-            register:'#auth_register',
+            register:'.register_form',
             forgot:"#auth_forgot"
         },
         selector:{
             popupButton:'.bt-1.modal-open',
             submit:{
                 login:'#auth_submit',
-                register:'#auth_register_submit',
+                register:'.submit',
                 forgot:'#forgot_submit',
                 logout:'#auth_logout'
             },
@@ -81,7 +81,6 @@
         init: function(){
             var _app = App,
                 _this = this;
-
             _app.getLogInit({message:'auth.js init..'});
 
             /*_app.getPhoneMask({
@@ -127,45 +126,24 @@
         },
         getRegister: function(params){
             var _app = App,
-                _this = this,
-                form = params.form.submit().serializeArray(),
-                isError = false,
-                formData = {},
-                key;
-
-            $.each(form, function (i, val){
-                key = val.name.split(/[-]/);
-                formData[key[1]] = val.value;
-            });
-
-            /*
-             проверка заполнености полей перешла в бэкенд
-             isError = _this.getInputError({
-                 object:params.form,
-                 data:form
+                 _this = this,
+                form = params.form.serializeArray(),
+                formData = {};
+            formData = _this.normalizeData(form);
+             _app.post({
+                 data:{handler:'register', func:'getRegister', form:formData}
+             }, function(response){
+                 if(response.status == 'success'){
+                     return location.reload();
+                 }else{
+                     return _this.getInputErrorAjax({
+                         object:params.form,
+                         data:params.form,
+                         error:response.message
+                     });
+                 }
              });
-             if(isError) return false;
-             */
-            _app.post({
-                data:{handler:'auth', func:'getRegister', form:formData}
-            }, function(response){
-                if(response.status == 'success'){
-                    return location.reload();
-                }else{
-                    if (
-                        response.message.recaptcha_update !== undefined &&
-                        response.message.recaptcha_update > 0
-                    )
-                    {
-                        grecaptcha.reset();
-                    }
-                    return _this.getInputErrorAjax({
-                        object:params.form,
-                        data:form,
-                        error:response.message
-                    });
-                }
-            });
+            return false;
         },
         getForgot: function(params){
             var _app = App,
@@ -222,11 +200,13 @@
             params.prefix = params.prefix || '';
             if(!params.object.length) return false;
             if(!params.data.length) return false;
+            console.log(params.error);
             var _this = this,
                 code,
                 isError = false;
             _this.clearErrors({form: params.object});
             for(code in params.error){
+                console.log(code);
                 _this.setError({code:code, text:params.error[code], object:params.object, prefix: params.prefix});
             }
             if(params.error.TYPE == 'ERROR'){
@@ -241,11 +221,9 @@
             params.text = params.text || [];
             params.code = params.code || '';
             params.object = params.object || {};
-            params.prefix = params.prefix || 'AUTH-';
             var input = $(params.object).find('input[name="'+params.prefix+params.code+'"]'),
                 parent = $(input).parent(),
                 span = $(params.object).find('#'+params.code+'_error') || {};
-
             if(span.length){
                 input.addClass('input-error');
                 $(span).show().text(params.text);
@@ -283,6 +261,15 @@
         },
         stripTags: function (strInputCode) {
             return strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+        },
+        normalizeData: function(data){
+            var res = {},
+                key = '';
+            $.each(data, function (i, val){
+                key = val.name;
+                res[key] = val.value;
+            });
+            return res;
         },
 
         getInputError: function(params){

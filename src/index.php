@@ -17,6 +17,8 @@ $APPLICATION->SetTitle('Главная');
 			6 => "PERSONAL_CITY",
 			7 => "WORK_COMPANY",
 			8 => "WORK_POSITION",
+			9 => "PASSWORD",
+			10 => "CONFIRM_PASSWORD"
 		),
 		"REQUIRED_FIELDS" => array(
 			0 => "EMAIL",
@@ -27,6 +29,8 @@ $APPLICATION->SetTitle('Главная');
 			5 => "PERSONAL_CITY",
 			6 => "WORK_COMPANY",
 			7 => "WORK_POSITION",
+			8 => "PASSWORD",
+			9 => "CONFIRM_PASSWORD"
 		),
 		"AUTH" => "Y",
 		"USE_BACKURL" => "N",

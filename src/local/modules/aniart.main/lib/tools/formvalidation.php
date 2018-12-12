@@ -11,7 +11,10 @@ use Aniart\Main\Exceptions\AniartException,
 
 class FormValidation
 {
-    private $arRequiredRegister = ['EMAIL', 'NAME', 'LAST_NAME', 'PASSWORD', 'CONFIRM_PASSWORD', 'PHONE'],
+    private
+        $arRequiredRegisterPartner = ['EMAIL', 'NAME', 'LAST_NAME', 'PASSWORD', 'CONFIRM_PASSWORD', 'PERSONAL_PHONE',
+                                      'PERSONAL_MOBILE', 'PERSONAL_CITY', 'WORK_COMPANY', 'WORK_POSITION'],
+        $arRequiredRegister = ['EMAIL', 'NAME', 'LAST_NAME', 'PASSWORD', 'CONFIRM_PASSWORD', 'PERSONAL_PHONE', 'PERSONAL_CITY'],
         $arRequiredLogin = ['LOGIN', 'PASSWORD'],
         $arRequiredForgot = ['EMAIL'],
         $arRequiredProfile = ['EMAIL', 'NAME', 'LAST_NAME', 'PHONE'],
@@ -52,28 +55,10 @@ class FormValidation
     {
 
         $arError = [];
-        $arRequired = $this->getRequired($this->arRequiredRegister, 'auth');
-
-        $this->data['recaptcha'];
-        if (!isset($this->data['recaptcha']) || strlen($this->data['recaptcha']) <= 0) {
-            $arError['recaptcha'] = i18n('RECAPTCHA_EMPTY', 'auth');
-        } else {
-            $url = 'https://www.google.com/recaptcha/api/siteverify';
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-                'secret'=> GRECAPTCHA_KEY_PRIVATE,
-                'response'=> $this->data['recaptcha']
-            )));
-            $out = curl_exec($ch);
-            $result = json_decode($out);
-            if($result->success == false){
-                $arError['recaptcha'] = i18n('RECAPTCHA_WRONG', 'auth');;
-                $arError['recaptcha_update'] = 1;
-            }
-        }
+        if($this->data['type'] == 'partner')
+            $arRequired = $this->getRequired($this->arRequiredRegisterPartner, 'register');
+        else
+            $arRequired = $this->getRequired($this->arRequiredRegister, 'register');
 
         if($this->data['PASSWORD'] != $this->data['CONFIRM_PASSWORD'] && strlen($this->data['CONFIRM_PASSWORD']) > 0)
             $arError['CONFIRM_PASSWORD'] = i18n('ERROR_DIFFRENT_PASSWORD', 'auth');
