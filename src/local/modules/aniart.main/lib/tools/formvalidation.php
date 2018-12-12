@@ -61,17 +61,16 @@ class FormValidation
             $arRequired = $this->getRequired($this->arRequiredRegister, 'register');
 
         if($this->data['PASSWORD'] != $this->data['CONFIRM_PASSWORD'] && strlen($this->data['CONFIRM_PASSWORD']) > 0)
-            $arError['CONFIRM_PASSWORD'] = i18n('ERROR_DIFFRENT_PASSWORD', 'auth');
+            $arError['CONFIRM_PASSWORD'] = i18n('ERROR_DIFFRENT_PASSWORD', 'register');
         if(strlen($this->data['PASSWORD']) > 0 && !$this->checkPass($this->data['PASSWORD']))
-            $arError['PASSWORD'] = i18n('ERROR_SHORT_PASSWORD', 'auth');
+            $arError['PASSWORD'] = i18n('ERROR_SHORT_PASSWORD', 'register');
         if(!$this->checkEmail($this->data['EMAIL']) && strlen($this->data['EMAIL']) > 0)
-            $arError['EMAIL'] = i18n('ERROR_EMAIL', 'auth');
+            $arError['EMAIL'] = i18n('ERROR_EMAIL', 'register');
         if(!empty(User::ExistsByEmail($this->data['EMAIL'])) && strlen($this->data['EMAIL']) > 0) {
             $usr = array_shift(User::ExistsByEmail($this->data['EMAIL']));
-            $arError['EMAIL'] = $usr["NAME"] . ", вы уже зарегистрированы. Чтобы оформить заказ - авторизуйтесь ".
-                htmlspecialchars_decode("<span>Здесь</span>") ;
+            $arError['EMAIL'] = i18n('EMAIL_EXISTS', 'register') ;
         }
-        if(!checkPhone($this->data['PHONE']) && strlen($this->data['PHONE']) > 0) $arError['PHONE'] = i18n('ERROR_PHONE', 'auth');
+        //if(!checkPhone($this->data['PHONE']) && strlen($this->data['PHONE']) > 0) $arError['PHONE'] = i18n('ERROR_PHONE', 'register');
 
         if(count($arRequired) > 0 && count($arError) > 0) $arError = array_merge($arRequired, $arError);
         elseif(count($arRequired) > 0) $arError = $arRequired;
