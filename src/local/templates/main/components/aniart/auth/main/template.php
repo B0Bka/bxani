@@ -9,34 +9,17 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
         <p><?echo GetMessage("MAIN_REGISTER_AUTH")?></p>
 
     <?else:?>
-        <form class="register_form_client" method="post" name="regform" enctype="multipart/form-data">
-            <?foreach($arResult['FIELDS'] as $field):
-                if($field['TYPE'] == 'list'):?>
-                    <select name="<?=$field['CODE']?>" class="<?=$field['ADDITIONAL_CLASS']?>"
-                        <?foreach($field['LIST'] as $listId => $option):?>
-                            <option value="<?=$listId?>"><?=$option?></option>
-                        <?endforeach?>
-                    </select>
-                <?elseif($field['TYPE'] == 'date'):?>
-                    <input type="date" name="<?=$field['CODE']?>" class="<?=$field['ADDITIONAL_CLASS']?>"
-                        placeholder="<?=i18n('PLACEHOLDER_'.$field['CODE'],'register');?>">
-                <?elseif ($field['TYPE'] == 'password'):?>
-                    <input type="password" name="<?=$field['CODE']?>" class="<?=$field['ADDITIONAL_CLASS']?>"
-                        placeholder="<?=i18n('PLACEHOLDER_'.$field['CODE'],'register');?>*">
-                <?else:?>
-                    <input type="text" name="<?=$field['CODE']?>" class="<?=$field['ADDITIONAL_CLASS']?>"
-                           placeholder="<?=i18n('PLACEHOLDER_'.$field['CODE'],'register');?><?=!empty($field['REQUIRED']) ? '*' : ''?>">
-                <?endif;
-            endforeach;?>
-            <input type="button" class="submit" name="register_submit_button" value="<?=i18n("REGISTER_BUTTON", "register")?>" />
+        <form class="auth_form" method="post" name="authform" enctype="multipart/form-data">
+            <input type="text" name="LOGIN" placeholder="<?=i18n('PLACEHOLDER_EMAIL','register');?>*">
+            <input type="password" name="PASSWORD" placeholder="<?=i18n('PLACEHOLDER_PASSWORD','register');?>*">
+            <input type="button" class="submit" name="auth_submit_button" value="<?=i18n("AUTH_BUTTON", "auth")?>" />
             <span class="system-error"></span>
         </form>
     <?endif?>
 </div>
 <script>
 $(document).ready(function () {
-    registration_<?=$arParams['TYPE']?> = Registration;
-    registration_<?=$arParams['TYPE']?>.init();
-    registration_<?=$arParams['TYPE']?>.setParams('<?=$component->getSignedComponentParams()?>');
+    authForm = Auth;
+    authForm.init();
 });
 </script>

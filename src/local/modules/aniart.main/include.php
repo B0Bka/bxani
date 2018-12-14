@@ -28,6 +28,7 @@ Bitrix\Main\Loader::registerAutoLoadClasses(null, [
     '\Aniart\Main\Ajax\Handlers\OrderAjaxHandler' => '/local/components/aniart/sale.order/ajax.php',
     '\Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler' => '/local/components/aniart/products.list/ajax.php',
     '\Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler' => '/local/components/aniart/register/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler' => '/local/components/aniart/auth/ajax.php',
 ]);
 
 $langs = new LangsList([
@@ -116,6 +117,7 @@ CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
     'products.list' => \Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler::class,
     'stores.product.list' => \Aniart\Main\Ajax\Handlers\StoreProductListAjaxHandler::class,
     'register' => \Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler::class,
+    'auth' => \Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler::class
 ]);
 
 $jsExtConfig = [

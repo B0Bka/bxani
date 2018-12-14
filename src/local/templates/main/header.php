@@ -14,7 +14,7 @@ $baskerService = app('BasketService');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="/favicon.png">
+    <?/*<link rel="shortcut icon" href="/favicon.png">*/?>
     <title><? $APPLICATION->ShowTitle(); ?></title>
     <?
     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/css/nouislider.min.css');
@@ -26,7 +26,7 @@ $baskerService = app('BasketService');
     <script src="http://css3-mediaqueries-js.googlecode.com/files/css3-mediaqueries.js"></script>
     <![endif]-->
 
-    <link href="<?= SITE_TEMPLATE_PATH ?>/fix.css?v=29102018" rel="stylesheet" type="text/css"/>
+    <?/*<link href="<?= SITE_TEMPLATE_PATH ?>/fix.css?v=29102018" rel="stylesheet" type="text/css"/>*/?>
 </head>
 
 <body>
@@ -107,9 +107,10 @@ $baskerService = app('BasketService');
                 </div>
 */?>
                 <div class="logo">
-                        <a href="/">
+                       <?/* <a href="/">
                             <img src="<?= SITE_TEMPLATE_PATH ?>/images/logo.png" alt=""/>
                         </a>
+*/?>
                 </div>
             </div>
         </div>

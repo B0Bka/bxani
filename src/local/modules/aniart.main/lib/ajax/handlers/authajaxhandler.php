@@ -16,27 +16,7 @@ class AuthAjaxHandler extends AbstractAjaxHandler
         return $this->request['func'];
     }
 
-    protected function getLogin()
-    {
-        global $USER;
-        global $APPLICATION;
-        if(!is_object($USER))
-        {
-            $USER = new \CUser;
-        }
-        $data = $this->post['form'];
-        $validation = new FormValidation($data, 'auth');
-        $validationResult = $validation->checkValidation();
-        if($validationResult)
-            return $this->setError($validationResult);
-        $authResult = $USER->Login($data['LOGIN'], $data['PASSWORD'], 'Y');
-        $APPLICATION->arAuthResult = $authResult;
-        if($authResult['TYPE'] == 'ERROR')
-        {
-            return $this->setError($authResult);
-        }
-        return $this->setOK($authResult);
-    }
+
 
     protected function getForgot()
     {

@@ -36,20 +36,6 @@
                 $(_this.block.pass.change).fadeToggle();
             });
 
-            $(_this.form.login).on('click', _this.selector.submit.login, function(){
-                _this.getLogin({
-                    form:$(_this.form.login)
-                });
-            });
-
-            $(_this.form.login).keypress(_this.selector.submit.login, function (e) {
-                if(e.which == 13) {
-                    _this.getLogin({
-                        form:$(_this.form.login)
-                    });
-                }
-            });
-
             $(_this.form.forgot).on('click', _this.selector.submit.forgot, function(){
                 _this.getForgot({
                     form:$(_this.form.forgot)
@@ -80,42 +66,7 @@
             });*/
             _this.events();
         },
-        getLogin: function(params){
-            var _app = App,
-                _this = this,
-                form = params.form.submit().serializeArray(),
-                isError = false,
-                formData = {},
-                key;
 
-            $.each(form, function (i, val){
-                key = val.name.split(/[-]/);
-                formData[key[1]] = val.value;
-            });
-
-            /*
-            проверка заполнености полей перешла в бэкенд
-            isError = _this.getInputError({
-                object:params.form,
-                data:form
-            });
-            if(isError) return false;
-            */
-
-            _app.post({
-                data:{handler:'auth', func:'getLogin', form:formData}
-            }, function(response){
-                if(response.status == 'success'){
-                    return location.reload();
-                }else{
-                    return _this.getInputErrorAjax({
-                        object:params.form,
-                        data:form,
-                        error:response.message,
-                    });
-                }
-            });
-        },
 
         getForgot: function(params){
             var _app = App,
@@ -172,13 +123,11 @@
             params.prefix = params.prefix || '';
             if(!params.object.length) return false;
             if(!params.data.length) return false;
-            console.log(params.error);
             var _this = this,
                 code,
                 isError = false;
             _this.clearErrors({form: params.object});
             for(code in params.error){
-                console.log(code);
                 _this.setError({code:code, text:params.error[code], object:params.object, prefix: params.prefix});
             }
             if(params.error.TYPE == 'ERROR'){
