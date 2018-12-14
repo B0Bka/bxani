@@ -41,9 +41,6 @@ $arFormFields = array(
 	"WORK_NOTES"=>1,
 );
 
-if(!CTimeZone::Enabled())
-	unset($arFormFields["AUTO_TIME_ZONE"]);
-
 $arUserFields = array();
 foreach ($arFormFields as $value=>$dummy)
 {
@@ -56,7 +53,10 @@ if (!empty($arRes))
 	foreach ($arRes as $key => $val)
 		$userProp[$val["FIELD_NAME"]] = (strLen($val["EDIT_FORM_LABEL"]) > 0 ? $val["EDIT_FORM_LABEL"] : $val["FIELD_NAME"]);
 }
-
+$arTypeFields = [
+    'client' => GetMessage("REGISTER_TYPE_CLIENT"),
+    'partner' => GetMessage("REGISTER_TYPE_PARTNER")
+];
 $arComponentParameters = array(
 	"PARAMETERS" => array(
 
@@ -78,29 +78,13 @@ $arComponentParameters = array(
 			"PARENT" => "BASE",
 		),
 
-		"AUTH" => array(
-			"NAME" => GetMessage("REGISTER_AUTOMATED_AUTH"),
-			"TYPE" => "CHECKBOX",
-			"DEFAULT" => "Y",
-			"PARENT" => "ADDITIONAL_SETTINGS",
-		),
-
-		"USE_BACKURL" => array(
-			"NAME" => GetMessage("REGISTER_USE_BACKURL"),
-			"TYPE" => "CHECKBOX",
-			"DEFAULT" => "Y",
-			"PARENT" => "ADDITIONAL_SETTINGS",
-		),
-
-		"SUCCESS_PAGE" => array(
-			"NAME" => GetMessage("REGISTER_SUCCESS_PAGE"),
-			"TYPE" => "STRING",
-			"DEFAULT" => "",
-			"PARENT" => "ADDITIONAL_SETTINGS",
-		),
-
-		"SET_TITLE" => array(),
-
+        "REGISTER_TYPE" => array(
+            "NAME" => GetMessage("REGISTER_TYPE"),
+            "TYPE" => "LIST",
+            "ADDITIONAL_VALUES" => "N",
+            "VALUES" => $arTypeFields,
+            "PARENT" => "BASE",
+        ),
 
 		"USER_PROPERTY"=>array(
 			"PARENT" => "ADDITIONAL_SETTINGS",

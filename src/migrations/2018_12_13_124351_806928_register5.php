@@ -3,7 +3,7 @@
 use Arrilot\BitrixMigrations\BaseMigrations\BitrixMigration;
 use Arrilot\BitrixMigrations\Exceptions\MigrationException;
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
-class __className__ extends BitrixMigration
+class Register520181213124351806928 extends BitrixMigration
 {
     /**
      * Run the migration.
@@ -13,9 +13,33 @@ class __className__ extends BitrixMigration
      */
     private $arData = [
         [
-            'UF_HASH' => 'HASH',
-            'UF_MESSAGE' => 'MESSAGE',
-            'UF_GROUP' => 'GROUP',
+            'UF_HASH' => 'ERROR_EMPTY_PERSONAL_PHONE',
+            'UF_MESSAGE' => 'Заполните поле Телефон',
+            'UF_GROUP' => 'register',
+        ],
+        [
+            'UF_HASH' => 'ERROR_EMPTY_PERSONAL_CITY',
+            'UF_MESSAGE' => 'Заполните поле Город',
+            'UF_GROUP' => 'register',
+        ],
+        [
+            'UF_HASH' => 'ERROR_EMPTY_PERSONAL_MOBILE',
+            'UF_MESSAGE' => '	Заполните второй номер телефона',
+            'UF_GROUP' => 'register',
+        ],[
+            'UF_HASH' => 'ERROR_EMPTY_WORK_COMPANY',
+            'UF_MESSAGE' => 'Заполните поле Название компании',
+            'UF_GROUP' => 'register',
+        ],
+        [
+            'UF_HASH' => 'ERROR_EMPTY_WORK_POSITION',
+            'UF_MESSAGE' => 'Заполните поле Должность',
+            'UF_GROUP' => 'register',
+        ],
+        [
+            'UF_HASH' => 'EMAIL_EXISTS',
+            'UF_MESSAGE' => 'Вы уже зарегистрированы на сайте',
+            'UF_GROUP' => 'register',
         ],
     ];
 

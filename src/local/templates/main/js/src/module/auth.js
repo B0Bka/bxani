@@ -12,14 +12,12 @@
         },
         form:{
             login:'#auth_login',
-            register:'.register_form',
             forgot:"#auth_forgot"
         },
         selector:{
             popupButton:'.bt-1.modal-open',
             submit:{
                 login:'#auth_submit',
-                register:'.submit',
                 forgot:'#forgot_submit',
                 logout:'#auth_logout'
             },
@@ -50,12 +48,6 @@
                         form:$(_this.form.login)
                     });
                 }
-            });
-
-            $(_this.form.register).on('click', _this.selector.submit.register, function(){
-                _this.getRegister({
-                    form:$(_this.form.register)
-                });
             });
 
             $(_this.form.forgot).on('click', _this.selector.submit.forgot, function(){
@@ -124,27 +116,7 @@
                 }
             });
         },
-        getRegister: function(params){
-            var _app = App,
-                 _this = this,
-                form = params.form.serializeArray(),
-                formData = {};
-            formData = _this.normalizeData(form);
-             _app.post({
-                 data:{handler:'register', func:'getRegister', form:formData}
-             }, function(response){
-                 if(response.status == 'success'){
-                     return location.reload();
-                 }else{
-                     return _this.getInputErrorAjax({
-                         object:params.form,
-                         data:params.form,
-                         error:response.message
-                     });
-                 }
-             });
-            return false;
-        },
+
         getForgot: function(params){
             var _app = App,
                 _this = this,

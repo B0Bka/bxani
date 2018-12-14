@@ -14,7 +14,6 @@ class FormValidation
     private
         $arRequiredRegisterPartner = ['EMAIL', 'NAME', 'LAST_NAME', 'PASSWORD', 'CONFIRM_PASSWORD', 'PERSONAL_PHONE',
                                       'PERSONAL_MOBILE', 'PERSONAL_CITY', 'WORK_COMPANY', 'WORK_POSITION'],
-        $arRequiredRegister = ['EMAIL', 'NAME', 'LAST_NAME', 'PASSWORD', 'CONFIRM_PASSWORD', 'PERSONAL_PHONE', 'PERSONAL_CITY'],
         $arRequiredLogin = ['LOGIN', 'PASSWORD'],
         $arRequiredForgot = ['EMAIL'],
         $arRequiredProfile = ['EMAIL', 'NAME', 'LAST_NAME', 'PHONE'],
@@ -55,7 +54,7 @@ class FormValidation
     {
 
         $arError = [];
-        if($this->data['type'] == 'partner')
+        if($this->data['client'] == 'partner')
             $arRequired = $this->getRequired($this->arRequiredRegisterPartner, 'register');
         else
             $arRequired = $this->getRequired($this->arRequiredRegister, 'register');

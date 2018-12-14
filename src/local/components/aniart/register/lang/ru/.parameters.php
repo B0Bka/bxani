@@ -2,7 +2,9 @@
 $MESS ['REGISTER_SHOW_FIELDS'] = "Поля, которые показывать в форме";
 $MESS ['REGISTER_REQUIRED_FIELDS'] = "Поля, обязательные для заполнения";
 $MESS ['REGISTER_AUTOMATED_AUTH'] = "Автоматически авторизовать пользователей";
-$MESS ['REGISTER_USE_BACKURL'] = "Отправлять пользователя по обратной ссылке, если она есть";
+$MESS ['REGISTER_TYPE'] = "Тип пользоватеоля";
+$MESS ['REGISTER_TYPE_CLIENT'] = "Клиент";
+$MESS ['REGISTER_TYPE_PARTNER'] = "Партнер";
 $MESS ['REGISTER_SUCCESS_PAGE'] = "Страница окончания регистрации";
 $MESS ['REGISTER_FIELD_EMAIL'] = "E-mail";
 $MESS ['REGISTER_FIELD_TITLE'] = "Обращение";

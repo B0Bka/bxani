@@ -3,7 +3,7 @@
 use Arrilot\BitrixMigrations\BaseMigrations\BitrixMigration;
 use Arrilot\BitrixMigrations\Exceptions\MigrationException;
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
-class __className__ extends BitrixMigration
+class Auth120181214140029577655 extends BitrixMigration
 {
     /**
      * Run the migration.
@@ -13,9 +13,9 @@ class __className__ extends BitrixMigration
      */
     private $arData = [
         [
-            'UF_HASH' => 'HASH',
-            'UF_MESSAGE' => 'MESSAGE',
-            'UF_GROUP' => 'GROUP',
+            'UF_HASH' => 'ERROR_EMPTY_UF_WHATSAPP',
+            'UF_MESSAGE' => 'Заполните номер WhatsApp',
+            'UF_GROUP' => 'register',
         ],
     ];
 
