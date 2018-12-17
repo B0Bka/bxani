@@ -88,6 +88,7 @@ $APPLICATION->SetTitle('Главная');
         "CACHE_TYPE" => "A"
     )
 );?>
+    a36470fd611fce3d136b0d2fe965f2c7
 <?
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');
 ?>

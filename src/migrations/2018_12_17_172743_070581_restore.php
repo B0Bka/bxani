@@ -3,7 +3,7 @@
 use Arrilot\BitrixMigrations\BaseMigrations\BitrixMigration;
 use Arrilot\BitrixMigrations\Exceptions\MigrationException;
 use Bitrix\Highloadblock\HighloadBlockTable as HLBT;
-class Auth120181214140029577655 extends BitrixMigration
+class Restore20181217172743070581 extends BitrixMigration
 {
     /**
      * Run the migration.
@@ -13,18 +13,13 @@ class Auth120181214140029577655 extends BitrixMigration
      */
     private $arData = [
         [
-            'UF_HASH' => 'ERROR_EMPTY_UF_WHATSAPP',
-            'UF_MESSAGE' => 'Заполните номер WhatsApp',
-            'UF_GROUP' => 'register',
-        ],
-        [
-            'UF_HASH' => 'RESTORE_PLACEHOLDER',
-            'UF_MESSAGE' => 'Введите e-mail',
+            'UF_HASH' => 'RESTORE_SUCCESS',
+            'UF_MESSAGE' => 'На вашу почту отравлено письмо с ссылкой для смены пароля',
             'UF_GROUP' => 'restore',
         ],
         [
-            'UF_HASH' => 'RESTORE_BUTTON',
-            'UF_MESSAGE' => 'Восстановить',
+            'UF_HASH' => 'RESTORE_ERROR',
+            'UF_MESSAGE' => 'Введенный email не найден',
             'UF_GROUP' => 'restore',
         ],
     ];

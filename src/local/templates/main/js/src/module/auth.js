@@ -5,42 +5,20 @@
         //constants
         block:{
             modal:'#myModal',
-            pass:{
-                change:'.forg-block'
-            },
-        },
-        form:{
-            forgot:"#auth_forgot"
         },
         selector:{
             popupButton:'.bt-1.modal-open',
             submit:{
-                forgot:'#forgot_submit',
                 logout:'#auth_logout'
             },
             phone:'input[name="AUTH-PHONE"]',
-            pass:{
-                change:'.forg-bt'
-            },
             error:'.input-error',
-            restoreOk: '#restoreOk',
             tab: '.tab',
             soc: '.auth-soc-client'
         },
         events: function(){
             var _app = App,
                 _this = this;
-
-            $(_this.block.modal).on('click', _this.selector.pass.change, function(){
-                $(_this.block.pass.change).fadeToggle();
-            });
-
-            $(_this.form.forgot).on('click', _this.selector.submit.forgot, function(){
-                _this.getForgot({
-                    form:$(_this.form.forgot)
-                });
-            });
-
             $(_app.block.main).on('click', _this.selector.submit.logout, function(){
                 _this.getLogout();
             });
@@ -63,31 +41,6 @@
             _this.events();
         },
 
-
-        getForgot: function(params){
-            var _app = App,
-                _this = this,
-                form = params.form.submit().serializeArray(),
-                formData = {};
-
-            $.each(form, function (i, val){
-                key = val.name.split(/[-]/);
-                formData[key[1]] = val.value;
-            });
-            _app.post({
-                data:{handler:'auth', func:'getForgot', form:formData}
-            }, function(response){
-                if(response.status == 'success'){
-                    _this.showRestoreOk({message:response.data.message});
-                }else{
-                    return _this.getInputErrorAjax({
-                        object:params.form,
-                        data:form,
-                        error:response.message
-                    });
-                }
-            });
-        },
         getLogout: function(){
             var _app = App;
             _app.post({

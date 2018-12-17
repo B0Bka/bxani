@@ -29,6 +29,7 @@ Bitrix\Main\Loader::registerAutoLoadClasses(null, [
     '\Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler' => '/local/components/aniart/products.list/ajax.php',
     '\Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler' => '/local/components/aniart/register/ajax.php',
     '\Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler' => '/local/components/aniart/auth/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler' => '/local/components/aniart/user.restore.password/ajax.php',
 ]);
 
 $langs = new LangsList([
@@ -108,7 +109,6 @@ app()->singleton([
 CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
 \Aniart\Main\Ajax\AjaxHandlerFactory::init([
 	'common' => '\Aniart\Main\Ajax\Handlers\CommonAjaxHandler',
-    'auth' => '\Aniart\Main\Ajax\Handlers\AuthAjaxHandler',
     'catalog' => '\Aniart\Main\Ajax\Handlers\CatalogAjaxHandler',
     'subscribe' => '\Aniart\Main\Ajax\Handlers\SubscribeAjaxHandler',
     'basket' => '\Aniart\Main\Ajax\Handlers\BasketAjaxHandler',
@@ -117,7 +117,8 @@ CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
     'products.list' => \Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler::class,
     'stores.product.list' => \Aniart\Main\Ajax\Handlers\StoreProductListAjaxHandler::class,
     'register' => \Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler::class,
-    'auth' => \Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler::class
+    'auth' => \Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler::class,
+    'restore' => \Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler::class
 ]);
 
 $jsExtConfig = [
