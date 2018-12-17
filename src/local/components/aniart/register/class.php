@@ -42,6 +42,9 @@ class RegisterComponent extends CBitrixComponent
     {
         $this->initParams();
         $this->getFields();
+        if($this->arParams['SOC_AUTH'] == 'Y')
+            $this->arResult['AUTH_SERVICES'] = $this->getSocServices();
+
         $this->IncludeComponentTemplate();
     }
 
@@ -121,6 +124,15 @@ class RegisterComponent extends CBitrixComponent
              $result[$arListRes['ID']] = $arListRes["VALUE"];
 
         return $result;
+    }
+
+    private function getSocServices()
+    {
+        if(!\CModule::IncludeModule("socialservices"))
+            return false;
+
+        $oAuthManager = new \CSocServAuthManager();
+        return $oAuthManager->GetActiveAuthServices($this->arResult);
     }
 
     public function getSignedComponentParams()

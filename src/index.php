@@ -10,6 +10,8 @@ $APPLICATION->SetTitle('Главная');
 	),
 	false
 ); ?>
+<span class="tab client"><?=i18n('CLIENT_TAB', 'auth')?></span>
+<span class="tab partner"><?=i18n('PARTNER_TAB', 'auth')?></span>
 
 <? $APPLICATION->IncludeComponent(
 	"aniart:register",
@@ -34,7 +36,8 @@ $APPLICATION->SetTitle('Главная');
 			5 => "PASSWORD",
 			6 => "CONFIRM_PASSWORD"
 		),
-		"TYPE" => 'client'
+		"TYPE" => 'client',
+		"SOC_AUTH" => 'Y'
 	),
 	false
 ); ?>
@@ -77,6 +80,14 @@ $APPLICATION->SetTitle('Главная');
 	),
 	false
 ); ?>
+<?$APPLICATION->IncludeComponent(
+    "aniart:user.restore.password",
+    "main",
+    Array(
+        "CACHE_TIME" => "3600",
+        "CACHE_TYPE" => "A"
+    )
+);?>
 <?
 require($_SERVER['DOCUMENT_ROOT'].'/bitrix/footer.php');
 ?>

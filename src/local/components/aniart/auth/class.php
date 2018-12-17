@@ -22,7 +22,17 @@ class AuthComponent extends CBitrixComponent
 
     private function doExecuteComponent()
     {
+        $this->arResult['AUTH_SERVICES'] = $this->getSocServices();
         $this->IncludeComponentTemplate();
+    }
+
+    private function getSocServices()
+    {
+        if(!\CModule::IncludeModule("socialservices"))
+            return false;
+
+        $oAuthManager = new \CSocServAuthManager();
+        return $oAuthManager->GetActiveAuthServices($this->arResult);
     }
 
     public function getSignedComponentParams()

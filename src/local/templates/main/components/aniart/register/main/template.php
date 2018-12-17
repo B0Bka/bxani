@@ -31,6 +31,19 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
             <input type="button" class="submit" name="register_submit_button" value="<?=i18n("REGISTER_BUTTON", "register")?>" />
             <span class="system-error"></span>
         </form>
+        <div class="auth-soc">
+            <?=i18n("REGISTER_SOC", "auth")?>
+            <?
+            $APPLICATION->IncludeComponent("aniart:blank", "socserv.auth",
+                array(
+                    "AUTH_SERVICES"=>$arResult["AUTH_SERVICES"],
+                    "SUFFIX"=>"form",
+                ),
+                $component,
+                array("HIDE_ICONS"=>"Y")
+            );
+            ?>
+        </div>
     <?endif?>
 </div>
 <script>

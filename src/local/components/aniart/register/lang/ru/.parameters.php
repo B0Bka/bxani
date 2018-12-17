@@ -46,4 +46,6 @@ $MESS ['REGISTER_FIELD_WORK_PROFILE'] = "Направления деятельн
 $MESS ['REGISTER_FIELD_WORK_LOGO'] = "Логотип компании";
 $MESS ['REGISTER_FIELD_WORK_NOTES'] = "Дополнительные заметки";
 $MESS ['USER_PROPERTY'] = "Показывать доп. свойства";
+$MESS ['SOC_AUTH'] = "Выводить авторизацию через соц. сети";
+
 ?>

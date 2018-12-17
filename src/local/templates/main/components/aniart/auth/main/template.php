@@ -15,6 +15,19 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
             <input type="button" class="submit" name="auth_submit_button" value="<?=i18n("AUTH_BUTTON", "auth")?>" />
             <span class="system-error"></span>
         </form>
+    <div class="auth-soc-client">
+        <?=i18n("AUTH_SOC", "auth")?>
+        <?
+        $APPLICATION->IncludeComponent("aniart:blank", "socserv.auth",
+            array(
+                "AUTH_SERVICES"=>$arResult["AUTH_SERVICES"],
+                "SUFFIX"=>"form",
+            ),
+            $component,
+            array("HIDE_ICONS"=>"Y")
+        );
+        ?>
+    </div>
     <?endif?>
 </div>
 <script>

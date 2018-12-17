@@ -8,16 +8,13 @@
             pass:{
                 change:'.forg-block'
             },
-            soc:'.social-auth'
         },
         form:{
-            login:'#auth_login',
             forgot:"#auth_forgot"
         },
         selector:{
             popupButton:'.bt-1.modal-open',
             submit:{
-                login:'#auth_submit',
                 forgot:'#forgot_submit',
                 logout:'#auth_logout'
             },
@@ -26,7 +23,9 @@
                 change:'.forg-bt'
             },
             error:'.input-error',
-            restoreOk: '#restoreOk'
+            restoreOk: '#restoreOk',
+            tab: '.tab',
+            soc: '.auth-soc-client'
         },
         events: function(){
             var _app = App,
@@ -49,11 +48,8 @@
             $(_app.block.main).on('click', _this.selector.error, function(){
                 _this.clearError({input: $(this)});
             });
-            /*
-            ** Кнопки соц сетей подгружаю динамически, чтобы не было запросов при каждой загрузке страницы
-             */
-            $(_app.block.main).on('click', _this.selector.popupButton, function(){
-                _this.getSocIcons();
+            $(_app.block.main).on('click', _this.selector.tab, function(){
+                _this.changeUserType($(this));
             });
         },
         init: function(){
@@ -100,17 +96,13 @@
                 return location.href = '/';
             });
         },
-        getSocIcons: function(){
+        changeUserType: function(el){
             var _app = App,
                 _this = this;
-            _app.post({
-                data:{handler:'auth', func:'getSocIcons'}
-            }, function(response){
-                if(response.status == 'success') {
-                 $(_this.block.soc).html(response.data);
-                }
-                return response;
-            });
+            if(el.hasClass('partner'))
+                $(_this.selector.soc).hide();
+            else
+                $(_this.selector.soc).show();
         },
         getCheckValue: function(value){
             if(!value.length) return false;

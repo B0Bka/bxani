@@ -94,6 +94,12 @@ $arComponentParameters = array(
 			"MULTIPLE" => "Y",
 			"DEFAULT" => array(),
 		),
+        "SOC_AUTH"=>array(
+            "PARENT" => "ADDITIONAL_SETTINGS",
+            "NAME" => GetMessage("SOC_AUTH"),
+            "TYPE" => "CHECKBOX",
+            "DEFAULT" => array(),
+        ),
 	),
 
 );
