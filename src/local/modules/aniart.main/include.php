@@ -30,11 +30,13 @@ Bitrix\Main\Loader::registerAutoLoadClasses(null, [
     '\Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler' => '/local/components/aniart/register/ajax.php',
     '\Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler' => '/local/components/aniart/auth/ajax.php',
     '\Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler' => '/local/components/aniart/user.restore.password/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\ChangePasswordAjaxHandler' => '/local/components/aniart/change.password/ajax.php',
+
 ]);
 
 $langs = new LangsList([
     new Lang('ru', 'Русский', ['iso' => 'ru']),
-    new Lang('ua', 'Украинский', ['iso' => 'ua']),
+    new Lang('az', 'Азербайджанский', ['iso' => 'az']),
 ], 'ru');
 
 app()->bind([
@@ -118,7 +120,8 @@ CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
     'stores.product.list' => \Aniart\Main\Ajax\Handlers\StoreProductListAjaxHandler::class,
     'register' => \Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler::class,
     'auth' => \Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler::class,
-    'restore' => \Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler::class
+    'restore' => \Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler::class,
+    'change' => \Aniart\Main\Ajax\Handlers\ChangePasswordAjaxHandler::class
 ]);
 
 $jsExtConfig = [
