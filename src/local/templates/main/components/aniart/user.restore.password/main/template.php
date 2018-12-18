@@ -1,15 +1,12 @@
-<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
-/**
- * @global $APPLICATION
- * @var array $arResult
- * @var array $arParams
- */
-if(isset($arResult['TEXT'])):
-    echo $arResult['TEXT'];
-?>
-    <script>
-        $( document ).ready(function() {
-            $('#personal_menu ul li[data-id=2] a').click();
-        });
-    </script>
-<?endif;?>
+<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+<form class="restore_form" method="post" name="regform" enctype="multipart/form-data">
+    <input type="text" name="EMAIL" placeholder="<?=i18n('RESTORE_PLACEHOLDER', 'restore')?>">
+    <input type="button" class="submit" name="forgot-submit" value="<?=i18n('RESTORE_BUTTON', 'restore')?>">
+</form>
+<span class="restoreSuccess"></span>
+<script>
+    $(document).ready(function () {
+        restoreForm = RestorePassword;
+        restoreForm.init();
+    });
+</script>

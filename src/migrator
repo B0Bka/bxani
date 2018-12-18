@@ -39,7 +39,11 @@ $config = [
 $database = new BitrixDatabaseStorage($config['table']);
 $templates = new TemplatesCollection();
 $templates->registerBasicTemplates();
-
+$templates->registerTemplate([
+              'name' => 'lang',
+              'path' => $_SERVER['DOCUMENT_ROOT'].'/local/migrator_tpl/lang',
+              'description' => 'add lang'
+          ]);
 $migrator = new Migrator($config, $templates, $database);
 
 $app = new Application('Migrator');

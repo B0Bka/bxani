@@ -27,11 +27,16 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/.composer/vendor/autoload.php';
 Bitrix\Main\Loader::registerAutoLoadClasses(null, [
     '\Aniart\Main\Ajax\Handlers\OrderAjaxHandler' => '/local/components/aniart/sale.order/ajax.php',
     '\Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler' => '/local/components/aniart/products.list/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler' => '/local/components/aniart/register/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler' => '/local/components/aniart/auth/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler' => '/local/components/aniart/user.restore.password/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\ChangePasswordAjaxHandler' => '/local/components/aniart/change.password/ajax.php',
+
 ]);
 
 $langs = new LangsList([
     new Lang('ru', 'Русский', ['iso' => 'ru']),
-    new Lang('ua', 'Украинский', ['iso' => 'ua']),
+    new Lang('az', 'Азербайджанский', ['iso' => 'az']),
 ], 'ru');
 
 app()->bind([
@@ -106,7 +111,6 @@ app()->singleton([
 CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
 \Aniart\Main\Ajax\AjaxHandlerFactory::init([
 	'common' => '\Aniart\Main\Ajax\Handlers\CommonAjaxHandler',
-    'auth' => '\Aniart\Main\Ajax\Handlers\AuthAjaxHandler',
     'catalog' => '\Aniart\Main\Ajax\Handlers\CatalogAjaxHandler',
     'subscribe' => '\Aniart\Main\Ajax\Handlers\SubscribeAjaxHandler',
     'basket' => '\Aniart\Main\Ajax\Handlers\BasketAjaxHandler',
@@ -114,6 +118,10 @@ CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
     'favorites' => '\Aniart\Main\Ajax\Handlers\FavoritesAjaxHandler',
     'products.list' => \Aniart\Main\Ajax\Handlers\ProductsListAjaxHandler::class,
     'stores.product.list' => \Aniart\Main\Ajax\Handlers\StoreProductListAjaxHandler::class,
+    'register' => \Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler::class,
+    'auth' => \Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler::class,
+    'restore' => \Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler::class,
+    'change' => \Aniart\Main\Ajax\Handlers\ChangePasswordAjaxHandler::class
 ]);
 
 $jsExtConfig = [
