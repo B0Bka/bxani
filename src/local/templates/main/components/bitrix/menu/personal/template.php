@@ -1,26 +1,19 @@
-<?
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-
-?>
-
+<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?if (!empty($arResult)):?>
-<div id="menu_footer_personal" class="one-footer-menu">
-    <div class="footer-tit">
-        <?=i18n('PERSONAL')?> <i class="fa fa-angle-down" aria-hidden="true"></i>
+    <div class="one-footer-menu">
+        <ul>
+        <?foreach($arResult as $item):
+           if($item["PERMISSION"] > "D"):?>
+
+            <li>
+                    <a href="<?=$item['LINK']?>" <?=$item["SELECTED"] ? 'class="selected"': ""?>
+                        <?=(empty($item['PARAMS']['DATA'])?'':$item['PARAMS']['DATA'])?>
+                    ><?=$item['TEXT']?></a>
+
+            </li>
+            <?
+            endif;
+        endforeach?>
+        </ul>
     </div>
-    <ul>
-    <?foreach($arResult as $item):?>
-        <li>
-            <?if($item['LINK'] == '/personal/#1'):?>
-                <span hashstring="footer_basket" hashtype="content">&nbsp</span>
-            <?else:?>
-                <a
-                    href="<?=$item['LINK']?>"
-                    <?=(empty($item['PARAMS']['DATA'])?'':$item['PARAMS']['DATA'])?>
-                ><?=$item['TEXT']?></a>
-            <?endif?>
-        </li>
-    <?endforeach?>
-    </ul>
-</div>
 <?endif;?>

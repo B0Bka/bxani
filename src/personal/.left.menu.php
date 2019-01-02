@@ -1,6 +1,13 @@
 <?
 $aMenuLinks = Array(
 	Array(
+		"Личные данные", 
+		"/personal/", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
 		"История заказов", 
 		"/personal/history/", 
 		Array(), 

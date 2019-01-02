@@ -31,6 +31,7 @@ Bitrix\Main\Loader::registerAutoLoadClasses(null, [
     '\Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler' => '/local/components/aniart/auth/ajax.php',
     '\Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler' => '/local/components/aniart/user.restore.password/ajax.php',
     '\Aniart\Main\Ajax\Handlers\ChangePasswordAjaxHandler' => '/local/components/aniart/change.password/ajax.php',
+    '\Aniart\Main\Ajax\Handlers\EditProfileAjaxHandler' => '/local/components/aniart/user.profile/ajax.php',
 
 ]);
 
@@ -121,7 +122,8 @@ CustomFilterSEFController::setAdditionalFilteredProps(['sizes']);
     'register' => \Aniart\Main\Ajax\Handlers\UserRegisterAjaxHandler::class,
     'auth' => \Aniart\Main\Ajax\Handlers\UserAuthAjaxHandler::class,
     'restore' => \Aniart\Main\Ajax\Handlers\RestorePasswordAjaxHandler::class,
-    'change' => \Aniart\Main\Ajax\Handlers\ChangePasswordAjaxHandler::class
+    'change' => \Aniart\Main\Ajax\Handlers\ChangePasswordAjaxHandler::class,
+    'profile' => \Aniart\Main\Ajax\Handlers\EditProfileAjaxHandler::class,
 ]);
 
 $jsExtConfig = [

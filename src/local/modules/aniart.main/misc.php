@@ -190,17 +190,26 @@ function checkDevelop()
 
 function detectOrder(){
     global $APPLICATION;
-    if(substr_count($APPLICATION->GetCurDir(false), 'order') > 0)
-    {
+    if(substr_count($APPLICATION->GetCurDir(false), '/order/') > 0)
         return true;
-    }
+
     return false;
 }
+function detectPersonal(){
+    global $APPLICATION;
+    if(substr_count($APPLICATION->GetCurDir(false), '/personal/') > 0)
+        return true;
 
+    return false;
+}
 function showBreadcrumb()
 {
     if(!detectMain() && !detectOrder()){
         return true;
     }
     return false;
+}
+function userIsPartner()
+{
+    return \CSite::InGroup([USER_GROUP_PARTNER]);
 }

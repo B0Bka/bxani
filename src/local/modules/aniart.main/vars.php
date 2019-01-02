@@ -1,5 +1,4 @@
 <?php
-
 //iblock
 define('PRODUCTS_IBLOCK_ID', 2);
 
@@ -23,6 +22,7 @@ define('NEW_POST_DELIVERY_ID', 3);
 //user groups
 define('USER_GROUP_ADMIN', 1);
 define('USER_GROUP_DEFAULT', 2);
+define('USER_GROUP_PARTNER', 6);
 
 //Письмо для восстановления пароля
 define('EVENT_FORGOT_PASSWORD', 'USER_RESTORE_PASS');
