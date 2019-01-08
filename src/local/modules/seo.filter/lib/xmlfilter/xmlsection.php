@@ -1,5 +1,5 @@
 <?
-namespace Seo\Filter;
+namespace Seo\Filter\XmlFilter;
 
 class CustomFacet extends \Bitrix\Iblock\PropertyIndex\Facet
 {
@@ -10,7 +10,7 @@ class CustomFacet extends \Bitrix\Iblock\PropertyIndex\Facet
     }
 }
 
-class Xml
+class XmlSection
 {
     protected $IBLOCK_ID = 0;
     protected $SKU_IBLOCK_ID = 0;
@@ -503,7 +503,7 @@ class Xml
         $arFilter = array(
             'IBLOCK_ID' => $this->IBLOCK_ID,
             'SECTION_ID' => $this->SECTION_ID,
-            //"INCLUDE_SUBSECTIONS" => "Y",
+            "INCLUDE_SUBSECTIONS" => "Y",
             'ACTIVE' => 'Y'
         );
         foreach($filterVals as $PID => $val)
@@ -537,7 +537,6 @@ class Xml
         $filterItems = array();
         for($i=1; $i<=self::maxdepth; $i++)
         {
-            $Kkey = ($i < self::maxdepth)? 'Lfirst':'Lsecond';
             foreach($this->arCombinations[$i] as $combo)
             {
                 $combo = unserialize($combo);
@@ -545,13 +544,7 @@ class Xml
                 if($countElements >= 1)
                 {
                     $url = $this->getUrlFromCombo($combo);
-                    $ancher = '';
-                    foreach($combo as $id)
-                    {
-                        if(isset($this->arResult['ALL_PROPS_VALS'][$id]))
-                            $ancher .= ' '.$this->arResult['ALL_PROPS_VALS'][$id];
-                    }
-                    $filterItems[$Kkey][] = array('LEVEL'=> $i, 'ID' =>$id, 'NAME'=>$ancher, 'FULL_PATH' => $url);
+                    $filterItems[] = array('LEVEL'=> $i, 'FULL_PATH' => $url);
                 }
             }
         }
@@ -588,3 +581,4 @@ class Xml
         return $arResult;
     }
 }
+

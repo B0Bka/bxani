@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
+<loc>http://localhost/catalog/first/filter/list-is-202/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+<url>
+<loc>http://localhost/catalog/first/filter/list-is-404/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+<url>
+<loc>http://localhost/catalog/first/filter/string-is-zyx/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+<url>
+<loc>http://localhost/catalog/first/filter/string-is-abc/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+<url>
+<loc>http://localhost/catalog/first/filter/items-is-самсунг/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+<url>
+<loc>http://localhost/catalog/first/filter/items-is-лж/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+<url>
+<loc>http://localhost/catalog/first/filter/book2-is-blue/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+<url>
+<loc>http://localhost/catalog/first/filter/book2-is-red/apply/</loc>
+<lastmod>2019-01-08</lastmod>
+</url>
+</urlset>

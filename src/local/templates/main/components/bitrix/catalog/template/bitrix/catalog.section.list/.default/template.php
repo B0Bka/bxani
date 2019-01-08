@@ -49,17 +49,20 @@ if ('Y' == $arParams['SHOW_PARENT_NAME'] && 0 < $arResult['SECTION']['ID'])
 {
 	$this->AddEditAction($arResult['SECTION']['ID'], $arResult['SECTION']['EDIT_LINK'], $strSectionEdit);
 	$this->AddDeleteAction($arResult['SECTION']['ID'], $arResult['SECTION']['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
+    $h1 = $APPLICATION->GetPageProperty("h1");
+    if(empty($h1))
+    {
+        $h1 = isset($arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"]) && $arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"] != ""
+            ? $arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"]
+            : $arResult['SECTION']['NAME'];
+    }
 
-	?><h1
+    ?><h1
 		class="<? echo $arCurView['TITLE']; ?>"
 		id="<? echo $this->GetEditAreaId($arResult['SECTION']['ID']); ?>"
-	><a href="<? echo $arResult['SECTION']['SECTION_PAGE_URL']; ?>"><?
-		echo (
-			isset($arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"]) && $arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"] != ""
-			? $arResult['SECTION']["IPROPERTY_VALUES"]["SECTION_PAGE_TITLE"]
-			: $arResult['SECTION']['NAME']
-		);
-	?></a></h1><?
+	><?
+		echo ($h1);
+	?></h1><?
 }
 if (0 < $arResult["SECTIONS_COUNT"])
 {

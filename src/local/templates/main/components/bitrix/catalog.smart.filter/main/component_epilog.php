@@ -13,6 +13,6 @@ if(Bitrix\Main\Loader::includeModule('seo.filter'))
     $seo = new \Seo\Filter\Meta($arParams['IBLOCK_ID'], $arResult['ITEMS'], $arParams['SECTION_ID']);
     $seo->setCanonical();
     $seo->setMeta();
-    $h1 = $seo->getH1();
+    $APPLICATION->SetPageProperty("h1", $seo->getH1());
 }
 ?>

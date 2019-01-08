@@ -87,7 +87,7 @@ class Meta
         return implode(', ', $arChecked);
     }
 
-    private function getProtocol()
+    public function getProtocol()
     {
         return stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
     }
